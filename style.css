@@ -1,0 +1,239 @@
+
+* {
+margin: 0;
+padding: 0;
+
+box-sizing: border-box;
+
+}
+
+/*header*/
+
+:root {
+   --title-primary: hsl(240, 6%, 13%);  /*Cor de titulo*/
+   --brand-primary: hsl(195, 46%, 40%);   /*Cor da marca do blog*/
+   --text-primary: hsl(240, 5%, 7%);   /*Cor de texto*/
+
+   --text-base: 1rem;
+   --text-sm: 0.875rem;   /*14/16= 0.875rem*/
+}
+
+html, input {
+
+    font: 400 var(--text-base)/160% "mulish", sans-serif;
+    color: var(--text-primary);
+}
+
+
+h1, h2, h3 {
+    font-size: 1.5rem;
+    
+    color: var(--title-primary);
+    
+}
+
+h3 {
+    font-size: 1.125rem;
+    line-height: 100%;  /* Alinhamento da imagem com as letras */
+}
+
+img {
+width: 100%;    /* Para imagem respeitar as caixas que tem no site*/
+height: auto;    /* largura automatica */
+
+display: block;
+transition: all 400ms;
+}
+
+
+img:hover {
+    scale: 1.1;
+}
+
+.text-sm {
+    font-size: var(--text-sm);
+}
+ 
+.container {    /*.container = classe*/
+    padding-inline: 1.25rem;  /* acolchoamento nas laterais do 'main'*/
+    max-width: calc(24rem + (1.25rem * 2));    /*Largura maxima */
+    margin-inline: auto;     /* Alinhamento ao meio*/
+}
+
+header {
+background-color: var(--brand-primary) ;
+padding: 0.8rem 1.75rem;
+
+}
+
+header .container {
+    max-width: 23.375rem;
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 1.652rem;
+}
+
+header a {
+    line-height: 50%;   /*Alinhamento do icone e com a pesquisa */
+}
+
+header img:last-child {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+header form input {
+    background: rgb(255 255 255 / 0.2);
+    border: none;
+    padding: 0.75rem 0.875rem;   /*12px/16px= 0.75rem -Autura  14px/16px= 0.875rem - largura */
+    border-radius: 0.25rem;      /*4px*/ 
+
+    font-weight: 600;
+    line-height: 100%;
+
+    color: white;
+}
+
+header form input::placeholder { 
+color: white;
+}
+
+/* main */
+
+main h1 {
+    margin-top: 1rem;
+}
+
+main .button {
+    margin-top: .5rem;
+}
+
+main p {
+    margin-top: 1rem;
+}
+
+button {
+    all: unset;  /* all: auset; (Tira tudo que deveria ta no button ) */
+    transition: all 300ms;   /*Faz a animacao com uma velocidade desejada*/
+}
+
+button:hover {
+    transform: scale(1.1) rotate(10deg);  /* animacao quando passa o mauser em cima (crescente)*/ /* rotate (10deg) = rotacionar 10 graus*/
+}
+
+/*Aside*/
+
+aside {
+    margin-top: 2rem;
+}
+
+aside section {
+   margin-top: 1rem; 
+   display: grid;
+   gap: 2rem;
+}
+
+section article {
+    display: grid;
+    grid-template-columns: 9.375rem 1fr;
+    gap: 1rem;
+}
+section article p {
+    margin-top: 0.75rem;
+}
+
+/*Footer*/
+
+footer {
+    background-color: var(--brand-primary);
+    color: white;
+    text-align: center;
+    padding-block: 1.5rem;  /* larguras em cima e em baixo*/
+    margin-top: 2.5rem;
+}
+
+@media (width > 80rem) {
+    img{
+        border-radius: 5px;
+    }
+  #app {
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "main  aside"
+    "footer footer";
+
+    gap: 2.5rem 2rem;  /*Espacos laterais e altura */
+  } 
+
+  header .container,
+   .container {
+    max-width: initial;
+    padding: initial;
+    margin: initial;
+  }
+   
+  header {
+    grid-area: header;
+  }
+
+  header .container {
+    max-width: 76rem;
+    margin-inline: auto;
+  }
+
+  header form {
+    flex: 1;
+  }
+
+  header form input {
+    width: 100%;
+  }
+
+  main {
+    grid-area: main;
+  }
+
+  main.container {
+    max-width: 50rem;
+    margin-left: auto;
+  }
+
+  aside {
+    grid-area: aside;
+  }
+
+  aside.container {
+    max-width: 24rem;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+}
+
+header {
+    animation: fromTop 600ms 100ms backwards;
+}
+
+main, aside {
+    animation: framBottom 800ms 100ms backwards;
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+}
